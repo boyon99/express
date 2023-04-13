@@ -1,7 +1,6 @@
 # Created by https://www.toptal.com/developers/gitignore/api/node,visualstudiocode,react,nextjs,macos
 # Edit at https://www.toptal.com/developers/gitignore?templates=node,visualstudiocode,react,nextjs,macos
 src/db.ts
-src/uploadS3.ts
 
 ### macOS ###
 # General
