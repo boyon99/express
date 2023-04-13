@@ -1,6 +1,6 @@
 import * as express from "express";
 import { Request, Response } from "express";
-import { upload } from "./upload";
+import { upload } from "./uploadS3";
 
 const app = express();
 

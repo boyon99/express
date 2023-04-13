@@ -2,6 +2,8 @@ import { Request } from "express";
 import * as multer from "multer";
 import * as multerS3 from "multer-s3";
 import { S3Client } from "@aws-sdk/client-s3";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 interface KeyCallback {
   (error: any, key?: string): void;
@@ -9,7 +11,7 @@ interface KeyCallback {
 
 const s3 = new S3Client({
   // aws-sdk 가 제공하는 s3 접속 클라이언트 객체를 만들고,
-  region: "ap-northeast-2",
+  region: "eu-central-1",
   credentials: {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID, // 방금 발급받은 키를 입력해주세요.
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY, // 방금 발급받은 키를 입력해주세요.
