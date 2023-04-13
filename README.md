@@ -46,14 +46,41 @@
 
 npm start 입력 시 자동으로 실행된다.
 
-## typeorm
-
-관계형 데이터베이스에서 SQL 언어를 쉽게 사용할 수 있게 지원하는 프레임워크이다.
-
 ## aws RDS
 
 `npm i typeorm mysql reflect-metadata`
 
+> typeorm는 관계형 데이터베이스에서 SQL 언어를 쉽게 사용할 수 있게 지원하는 프레임워크이다.
+
 설치 후 db.ts 파일 생성하여 세팅하기
 
 - app.ts 에서 DB 연결하기
+
+- 모델을 만들기 위한 entity 폴더 생성하기
+
+> https://github.com/boyon99/express/tree/e3d54aeb5884355595d7aa2ebe54e6b0d7aa28a3
+
+## aws S3
+
+`npm i multer`
+`npm install -D @types/multer`
+
+`multer` 는 node.js 상에서 파일 업로드를 처리해주는 미들웨어입니다.
+
+- src/upload.ts 파일에 설정하기
+
+> 커밋
+
+- app.ts에 관련 코드 작성하고 upload 폴더 생성 후 POST 요청하면 이미지 업로드됨
+
+> 커밋
+
+- S3 기능 이용하기
+  aws에서는 서비스를 사용하기 위한 key라는 것이 존재한다. 그리고 계정에서 특정한 서비스만 사용할 수 있도록 설정해놓고 발급하는 키가 존재한다. 후자를 발급하는 곳이 **iam**이다.
+
+- iam에서 S3 키 발급받기
+
+`npm i multer-s3 aws-sdk`
+`npm i -D @types/multer-s3`
+
+- uploadS#.ts 파일 작성하기
