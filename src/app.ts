@@ -2,12 +2,10 @@ import * as express from "express";
 import { myDataBase } from "./db";
 import AuthRouter from "./router/auth";
 import PostsRouter from "./router/posts";
+import * as cookieParser from "cookie-parser"; // 불러오기
 import * as cors from "cors";
-// 캐시 형태로 발급된 토큰을 저장하기 위한 객체
-// 실제로는 redis 를 활용함
 export const tokenList = {};
 
-// db 연결
 myDataBase
   .initialize()
   .then(() => {
@@ -26,12 +24,13 @@ app.use(
 );
 app.use(
   cors({
-    origin: true, // 모두 허용
+    origin: true,
   })
 );
+app.use(cookieParser()); // 사용한다고 명시
 
 app.use("/auth", AuthRouter);
-app.use("/posts", PostsRouter); // posts 라우터 추가
+app.use("/posts", PostsRouter);
 
 app.listen(3000, () => {
   console.log("Express server has started on port 3000");

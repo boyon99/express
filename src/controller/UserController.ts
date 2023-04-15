@@ -7,8 +7,10 @@ import {
   generatePassword,
   generateRefreshToken,
   registerToken,
+  removeToken,
 } from "../util/Auth";
 import { Request, Response } from "express";
+import { JwtRequest } from "../middleware/AuthMiddleware";
 
 export class UserController {
   static register = async (req: Request, res: Response) => {
@@ -97,5 +99,29 @@ export class UserController {
       maxAge: 60 * 60 * 24 * 30 * 1000,
     });
     res.send({ content: decoded, accessToken });
+  };
+  static refresh = async (req: JwtRequest, res: Response) => {
+    const { id, username, email } = req.decoded;
+    // 기존에 발급한 토큰은 메모리에서 삭제
+    removeToken(req.cookies.refreshToken);
+    // 액세스 토큰 및 리프레시 토큰 새롭게 발급
+    const accessToken = generateAccessToken(id, username, email);
+    const refreshToken = generateRefreshToken(id, username, email);
+    // 새롭게 발급한 토큰 저장
+    registerToken(refreshToken, accessToken);
+    // 토큰을 복호화해서, 담겨있는 유저 정보 및 토큰 만료 정보도 함께 넘겨줌
+    const decoded = verify(accessToken, process.env.SECRET_ATOKEN);
+
+    res.cookie("refreshToken", refreshToken, {
+      path: "/",
+      httpOnly: true,
+      maxAge: 60 * 60 * 24 * 30 * 1000,
+    });
+    res.send({ content: decoded, accessToken });
+  };
+  static verify = async (req: JwtRequest, res: Response) => {
+    // 필요하다면 verify 할때마다 토큰을 다시 발급해줄 수도 있을 것
+    // 미들웨어를 거치면서 req 에 이미 decoded 가 들어가있음
+    res.send({ content: req.decoded });
   };
 }
