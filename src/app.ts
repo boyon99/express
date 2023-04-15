@@ -1,10 +1,7 @@
-import * as express from "express";
-import { Request, Response } from "express";
+import express from "express";
 import { myDataBase } from "./db";
-import { upload } from "./uploadS3";
-import PostRouter from "./router/post";
+import cors from "cors";
 
-// db 연결
 myDataBase
   .initialize()
   .then(() => {
@@ -16,15 +13,13 @@ myDataBase
 
 const app = express();
 app.use(express.json());
-
 app.use(express.urlencoded());
+app.use(
+  cors({
+    origin: true, // 모두 허용
+  })
+);
 
-app.use("/posts", PostRouter); // posts 로 경로 설정
-
-app.post("/upload", upload.single("img"), (req: Request, res: Response) => {
-  res.json(req.file);
-}); // 업로드 후에, (req, res) => {} 부분이 실행
-
-app.listen(2000, () => {
-  console.log("Express server has started on port 2000");
+app.listen(3000, () => {
+  console.log("Express server has started on port 3000");
 });

@@ -98,3 +98,12 @@ npm start 입력 시 자동으로 실행된다.
 - db.ts 파일 추가하기
 
 - entity 파일 생성하여 모델 추가하기
+
+> 커밋
+
+## Node.js - Express + TypeORM + JWT
+
+```shell
+npm install express typeorm mysql reflect-metadata cors dotenv
+npm install -D @types/cors @types/express typescript
+```
