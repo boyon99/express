@@ -5,22 +5,20 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToMany,
+  ManyToOne,
 } from "typeorm";
-import { Post } from "./Post";
+import { User } from "./User";
 
 @Entity()
-export class User {
+export class Post {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ unique: true })
-  email: string;
-
-  @Column({ unique: true })
-  username: string;
+  @Column()
+  title: string;
 
   @Column()
-  password: string;
+  body: string;
 
   @CreateDateColumn()
   createdAt: Date;
@@ -28,6 +26,6 @@ export class User {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @OneToMany((type) => Post, (post) => post.author) // posts를 Post의 author와 연결
-  posts: Post[];
+  @ManyToOne((type) => User, (user) => user.posts) // author를 User의 posts와 연결
+  author: User;
 }

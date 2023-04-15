@@ -52,7 +52,12 @@ export class UserController {
     // 토큰을 복호화해서, 담겨있는 유저 정보 및 토큰 만료 정보도 함께 넘겨줌
     const decoded = verify(accessToken, process.env.SECRET_ATOKEN);
 
-    res.send({ content: decoded, accessToken, refreshToken });
+    res.cookie("refreshToken", refreshToken, {
+      path: "/",
+      httpOnly: true,
+      maxAge: 60 * 60 * 24 * 30 * 1000,
+    });
+    res.send({ content: decoded, accessToken });
   };
   static login = async (req: Request, res: Response) => {
     // 로그인
@@ -86,6 +91,11 @@ export class UserController {
     // 토큰을 복호화해서, 담겨있는 유저 정보도 함께 넘겨줌
     const decoded = verify(accessToken, process.env.SECRET_ATOKEN);
 
-    res.send({ content: decoded, accessToken, refreshToken });
+    res.cookie("refreshToken", refreshToken, {
+      path: "/",
+      httpOnly: true,
+      maxAge: 60 * 60 * 24 * 30 * 1000,
+    });
+    res.send({ content: decoded, accessToken });
   };
 }

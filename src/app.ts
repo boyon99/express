@@ -1,6 +1,7 @@
 import * as express from "express";
 import { myDataBase } from "./db";
 import AuthRouter from "./router/auth";
+import PostsRouter from "./router/posts";
 import * as cors from "cors";
 // 캐시 형태로 발급된 토큰을 저장하기 위한 객체
 // 실제로는 redis 를 활용함
@@ -29,7 +30,8 @@ app.use(
   })
 );
 
-app.use("/auth", AuthRouter); // AuthRouter 를 지정
+app.use("/auth", AuthRouter);
+app.use("/posts", PostsRouter); // posts 라우터 추가
 
 app.listen(3000, () => {
   console.log("Express server has started on port 3000");
