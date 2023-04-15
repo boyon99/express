@@ -107,3 +107,10 @@ npm start 입력 시 자동으로 실행된다.
 npm install express typeorm mysql reflect-metadata cors dotenv
 npm install -D @types/cors @types/express typescript
 ```
+
+- JWT 구현에 필요한 모듈 설치
+
+```
+npm install jsonwebtoken bcrypt
+npm install -D @types/jsonwebtoken @types/bcrypt
+```
