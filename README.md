@@ -84,3 +84,17 @@ npm start 입력 시 자동으로 실행된다.
 `npm i -D @types/multer-s3`
 
 - uploadS#.ts 파일 작성하기
+
+> 커밋
+
+`npm install dotenv`
+
+엑세스키와 같은 민감한 정보는 환경변수 형태로 등록해주는게 좋다.
+
+> 커밋 2
+
+`npm install typeorm mysql reflect-metadata`
+
+- db.ts 파일 추가하기
+
+- entity 파일 생성하여 모델 추가하기

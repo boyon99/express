@@ -4,28 +4,25 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
-  OneToMany,
 } from "typeorm";
-import { Comment } from "./Comment";
 
-@Entity() // 해당 클래스는 DB 테이블
+@Entity()
 export class Post {
-  @PrimaryGeneratedColumn() // Primary Key, 자동 생성
+  @PrimaryGeneratedColumn()
   id: number;
 
-  @Column() // 하나의 테이블 어트리뷰트
+  @Column()
   title: string;
 
   @Column()
   body: string;
 
-  @CreateDateColumn() // 생성 시의 시간 자동 기록
+  @Column() // img url 을 저장하기 위함
+  img: string;
+
+  @CreateDateColumn()
   createdAt: Date;
 
-  @UpdateDateColumn() // 수정 시의 시간 자동 기록
+  @UpdateDateColumn()
   updatedAt: Date;
-
-  // foreign key
-  @OneToMany(() => Comment, (comment) => comment.post) // comment의 post 부분과 연결
-  comments: Comment[]; // 하나의 게시글에 댓글 배열
 }
