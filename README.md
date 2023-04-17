@@ -172,6 +172,11 @@ app.listen(3000, () => {
 
 > https://github.com/boyon99/express/commit/e3d54aeb5884355595d7aa2ebe54e6b0d7aa28a3
 
+### 파일 구조
+
+- routes 폴더 → 각 자원에 따른 route 파일을 만들고, 해당 route 파일 내부에 post, get 에 따른 함수를 작성
+- controllers 폴더 → route 에 들어갈 함수 (db 에 접근하는 로직) 을 따로 분리해서 작성
+
 <br/>
 
 # Express + TypeORM + S3
