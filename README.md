@@ -1,3 +1,10 @@
+- [Node.js - Express + TypeORM + RDS](https://www.notion.so/Node-js-Express-TypeORM-RDS-f4b1fe150fc24b07928d9b7538a6ac31)
+- [Node.js - Express + TypeORM + S3 (+ React)](https://www.notion.so/Node-js-Express-TypeORM-S3-React-634c161e81cb4a468d8f924ff2dcff09)
+- [Node.js - Express + TypeORM + JWT](https://www.notion.so/Node-js-Express-TypeORM-JWT-a86e2baadff34bfb8aa76f5a7d9cf0db)
+- [백엔드 실습 레포](https://github.com/boyon99/Moodlog-BE-WEB/tree/develop)
+
+<br/>
+
 # Express + TypeORM + RDS
 
 ## Express란?
