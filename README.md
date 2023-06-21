@@ -1,4 +1,5 @@
 # Express + TypeORM + RDS
+[link](https://www.notion.so/FastCampus-Node-js-4a515d11d56440aba76ba90c353c2674?pvs=21)
 
 ## Express란?
 
